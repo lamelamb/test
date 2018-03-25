@@ -1,0 +1,50 @@
+1   标签的的data-* 属性允许用户给元素自定义数据。
+
+2 href="javascript:void(0)"  表示让超链接取执行一个js 脚本文件（函数），这里 void(0) 表示啥也不执行
+
+
+3 有main ,却找不到main 方法
+最终，在网络上找到一盏明灯，方法如下：
+把properties属性里的java compiler-->building-->abort build when build path errors occur 前的勾去掉了
+
+
+
+4 ：Did not find handler method for [/TaskServelt2]
+
+
+ 原因一： springmvc 里面的context:component-scan 标签的包有没有写对
+ 原因二： 有没有在要转入的类前面加上@Controller  注释
+
+
+
+5  springmvc 的对象反转：
+   1 在对应的applicationContext-*.xml  文件中写上对应的bean
+   2 在要引用对象的类中请求一下，如：
+      
+    @Autowired
+	private Client client;
+   3 然后就可以直接用啦
+
+
+
+
+
+6  modelAndView  
+
+  把需要在结果页面使用的参数放到model 里面去，然后传递给指定的view .
+
+
+
+
+7 禁止输入框缓存提示
+
+   ---- 默认自动补全提示功能开启，在输入框内添加属性autocomplete="off" 即可。
+
+
+
+
+
+
+
+
+
