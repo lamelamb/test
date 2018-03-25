@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>动态表格</title>
+		
+	</head>
+        <style>
+             *{ 
+              margin:0;
+              padding:0;
+                }
+            #box{
+            	width: 50%;
+            	margin:  100px auto;
+            }
+            table{
+            	margin-bottom: 50px;
+            }
+        </style>
+	<body>
+		<div id="box">
+			<table id="tb1">
+				<thead>
+					<tr>
+						<th>name</th>
+						<th>sex</th>
+						<th>爱好</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>lamb</td>
+						<td>1</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>goat</td>
+						<td>0</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>sheep</td>
+						<td>0</td>
+						<td>&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+			   name:<input type='text' id="name"/>
+			   <input type="button" id="add" value="添加"/>
+			</div>
+		</div>
+		<script>
+			    var oTable = document.getElementById('tb1');
+			    var rows = oTable.tBodies[0].rows ;
+			    var oName = document.getElementById('name');
+			    var oAdd = document.getElementById('add');
+			    var arr = [] ;
+			   
+			   // 出入行obj ，是一个数组
+			   function bgColor(rows){
+			   	var oldColor = null ;
+			   	for(var i= 0 ; i<rows.length;i++ ){
+			   		if(i%2==0){
+			   			rows[i].style.background ="lightgreen";
+			   		}
+			   		
+			    	 rows[i].onmouseover = function(){
+			    	 	// 用一个容器将原来的color 存储起来
+			    	 	oldColor = this.style.backgroundColor ;
+			    	 	 this.style.background = 'lightblue' ;
+			    	 	 this.style.color = 'white' ;
+			    	 }
+			    	 rows[i].onmouseout = function(){
+			    	 	//  离开时 显示 原来的颜色 
+			    	 	 this.style.background = oldColor ;
+			    	 	 this.style.color = 'black' ;
+			    	 }
+			    	
+			    }
+			   }
+			    
+			    
+			    bgColor(rows);
+			    
+			     oAdd.onclick = function(){
+			     	 rows = oTable.tBodies[0].rows ;			     	
+			        var oTr = document.createElement('tr');
+			                        
+                   oTr.innerHTML = '<td>'+ (rows.length +1) +'</td>'
+                                   +'<td>'+ oName.value +'</td>'
+                                   +'<td>'+ '&nbsp;' +'</td>' ;
+                     oTable.tBodies[0].appendChild( oTr);
+			     	  oName.value ='' ;
+			     	  bgColor(rows);
+			     }
+		</script>
+	</body>
+</html>
